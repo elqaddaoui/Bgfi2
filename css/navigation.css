@@ -108,8 +108,41 @@
   transition: transform .5s var(--ease), filter .5s var(--ease);
   filter: drop-shadow(0 2px 10px rgba(0, 8, 24, .55));
 }
+.brand-wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  color: #fff;
+  filter: drop-shadow(0 2px 10px rgba(0, 8, 24, .55));
+  transition: transform .5s var(--ease), filter .5s var(--ease);
+}
+.brand-wordmark strong {
+  font-family: var(--font-body);
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.075em;
+}
+.brand-wordmark span {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.055em;
+}
+.brand-wordmark::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  margin-left: 1px;
+  align-self: flex-start;
+  background: var(--sage-on-navy);
+  clip-path: polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);
+}
 .site-header.scrolled .brand-logo { height: 27px; }
-.brand:hover .brand-logo {
+.site-header.scrolled .brand-wordmark { transform: scale(.94); transform-origin: left center; }
+.brand:hover .brand-logo,
+.brand:hover .brand-wordmark {
   transform: translateY(-1px) scale(1.02);
   filter: drop-shadow(0 4px 18px rgba(157, 180, 154, .40));
 }
@@ -363,6 +396,7 @@ body.drawer-open .nav-drawer { transform: none; visibility: visible; }
   border-bottom: 1px solid rgba(194, 210, 188, .13);
 }
 .drawer-head .brand-logo { height: 24px; filter: none; }
+.drawer-head .brand-wordmark { filter: none; }
 .drawer-close {
   position: relative;
   width: 38px; height: 38px;
@@ -544,6 +578,8 @@ body.drawer-open .drawer-link { opacity: 1; transform: none; transition-delay: c
   .header-actions { gap: 10px; }
   .edition-badge { padding: 6px 13px; font-size: 9.5px; letter-spacing: .14em; }
   .brand-logo, .site-header.scrolled .brand-logo { height: 26px; }
+  .brand-wordmark strong { font-size: 22px; }
+  .brand-wordmark span { font-size: 18px; }
 }
 @media (max-width: 560px) {
   .edition-badge .bgfi-star { display: none; }
@@ -553,7 +589,14 @@ body.drawer-open .drawer-link { opacity: 1; transform: none; transition-delay: c
   .drawer-link { padding-top: 16px; padding-bottom: 16px; }
 }
 @media (max-width: 400px) {
-  .edition-badge { display: none; }
+  .header-inner { padding-inline: 12px; gap: 8px; }
+  .header-actions { gap: 7px; }
+  .edition-badge { display: inline-flex; padding: 5px 7px; font-size: 7.5px; letter-spacing: .08em; }
+  .nav-toggle { width: 40px; height: 40px; margin-right: -3px; }
+  .brand-wordmark { gap: 4px; }
+  .brand-wordmark strong { font-size: 18px; }
+  .brand-wordmark span { font-size: 15px; }
+  .brand-wordmark::after { width: 4px; height: 4px; }
 }
 
 /* Body scroll lock while the drawer is open */
