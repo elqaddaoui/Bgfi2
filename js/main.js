@@ -176,6 +176,16 @@
     backTop.addEventListener('click', () =>
       window.scrollTo({ top: 0, behavior: 'smooth' })
     );
+
+    const protectedSections = document.querySelectorAll('.testimonials-section, .family-section, .finale, .site-footer');
+    const visibleProtected = new Set();
+    const backTopIO = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        entry.isIntersecting ? visibleProtected.add(entry.target) : visibleProtected.delete(entry.target);
+      });
+      backTop.classList.toggle('is-over-content', visibleProtected.size > 0);
+    }, { threshold: 0.04 });
+    protectedSections.forEach((section) => backTopIO.observe(section));
   }
 
   // ============================================================
@@ -382,6 +392,65 @@
       if (!ticking) { requestAnimationFrame(tick); ticking = true; }
     }, { passive: true });
     tick();
+  })();
+
+  // ============================================================
+  //  Values testimonials — accessible slider
+  // ============================================================
+  (function testimonialSlider() {
+    const root = document.querySelector('[data-testimonial-slider]');
+    if (!root) return;
+
+    const slides = Array.from(root.querySelectorAll('[data-slide]'));
+    const dots = Array.from(root.querySelectorAll('[data-testimonial-dot]'));
+    const prev = root.querySelector('[data-testimonial-prev]');
+    const next = root.querySelector('[data-testimonial-next]');
+    let index = 0;
+    let timer = null;
+    let paused = false;
+
+    function show(nextIndex, focusDot) {
+      index = (nextIndex + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        const active = i === index;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', String(!active));
+        if ('inert' in slide) slide.inert = !active;
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === index);
+        dot.setAttribute('aria-selected', String(i === index));
+        dot.setAttribute('tabindex', i === index ? '0' : '-1');
+      });
+      if (focusDot && dots[index]) dots[index].focus();
+    }
+
+    function restart() {
+      if (timer) window.clearInterval(timer);
+      timer = null;
+      if (!reduceMotion && !paused && !document.hidden) {
+        timer = window.setInterval(() => show(index + 1, false), 7000);
+      }
+    }
+
+    prev?.addEventListener('click', () => { show(index - 1, false); restart(); });
+    next?.addEventListener('click', () => { show(index + 1, false); restart(); });
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i, true); restart(); }));
+    root.addEventListener('mouseenter', () => { paused = true; restart(); });
+    root.addEventListener('mouseleave', () => { paused = false; restart(); });
+    root.addEventListener('focusin', () => { paused = true; restart(); });
+    root.addEventListener('focusout', (event) => {
+      if (!root.contains(event.relatedTarget)) { paused = false; restart(); }
+    });
+    root.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      show(index + (event.key === 'ArrowRight' ? 1 : -1), true);
+      restart();
+    });
+    document.addEventListener('visibilitychange', restart);
+    show(0, false);
+    restart();
   })();
 
   // ============================================================
