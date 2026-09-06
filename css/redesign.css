@@ -2215,3 +2215,266 @@ section[id] { scroll-margin-top: 96px; }
   .education-photo img, .women-photo, .city-photo img, .testimonial-slide { transition: none !important; }
   .family-progress span { animation: none; }
 }
+
+/* ============================================================
+   Editorial content update · September 2026
+   ============================================================ */
+
+/* The subscription chapter is intentionally unavailable in this edition. */
+.subscribe-section {
+  display: none !important;
+}
+
+/* Seminar: one dominant supplied image with both original images preserved. */
+.feature-grid--seminars {
+  grid-template-columns: minmax(0, 1.28fr) minmax(320px, .72fr);
+  gap: clamp(44px, 5vw, 72px);
+}
+.feature-visual--trio {
+  display: grid;
+  grid-template-columns: minmax(0, 1.58fr) minmax(180px, .82fr);
+  grid-template-rows: repeat(2, minmax(220px, 1fr));
+  gap: 16px;
+  min-height: 620px;
+  overflow: visible;
+  border-radius: 0;
+  box-shadow: none;
+}
+.feature-visual--trio .seminar-photo {
+  position: relative;
+  inset: auto;
+  width: auto;
+  aspect-ratio: auto;
+  min-width: 0;
+  padding: 0;
+  border-radius: 18px;
+  background: #061d48;
+}
+.feature-visual--trio .seminar-photo--hero {
+  grid-row: 1 / -1;
+  border-radius: 28px 28px 90px 28px;
+}
+.feature-visual--trio .seminar-photo--capital { border-radius: 18px 54px 18px 18px; }
+.feature-visual--trio .seminar-photo--communication { border-radius: 18px 18px 54px 18px; }
+.feature-visual--trio .seminar-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+}
+.feature-visual--trio .seminar-photo--hero img { object-position: center; }
+.feature-visual--trio .seminar-photo figcaption {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 13px;
+  z-index: 2;
+  padding: 9px 11px;
+  border: 1px solid rgba(255,255,255,.16);
+  color: #fff;
+  background: rgba(0,24,60,.76);
+  backdrop-filter: blur(10px);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.feature-visual--trio .feature-visual-badge {
+  left: 22px;
+  bottom: 22px;
+  z-index: 4;
+  transform: translateY(calc(100% + 14px));
+}
+.feature-visual--trio .seminar-photo--hero figcaption { display: none; }
+
+/* BGFI Tour: the original campaign image remains the largest visual. */
+.tour-gallery {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(190px, .92fr);
+  gap: 16px;
+  align-items: end;
+  overflow: visible;
+}
+.tour-photo {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 26px 70px rgba(0,31,77,.18);
+}
+.tour-photo--main { aspect-ratio: 3 / 4; }
+.tour-photo--action { aspect-ratio: 4 / 3; align-self: end; }
+.tour-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.1s var(--ease-lux);
+}
+.tour-photo--main img { object-position: center; }
+.tour-photo:hover img { transform: scale(1.035); }
+.tour-photo figcaption {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  padding: 9px 12px;
+  color: #fff;
+  background: rgba(0,31,77,.8);
+  backdrop-filter: blur(10px);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.tour-gallery > .mag-frame-corner { z-index: 3; }
+
+/* Three matching editorial cards. */
+.double-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.double-grid--three .double-card { display: flex; flex-direction: column; }
+.double-grid--three .double-body { display: flex; flex: 1; flex-direction: column; }
+.double-grid--three .double-body p { margin-bottom: 28px; }
+.double-grid--three .double-corner { margin-top: auto; }
+.double-visual--training img { object-position: center 44%; }
+
+/* Real testimonial photography. */
+.testimonial-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-lux);
+}
+.testimonial-portrait--integrite .testimonial-photo { object-position: center 24%; }
+.testimonial-portrait--travail .testimonial-photo { object-position: center 28%; }
+.testimonial-photo-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(0,23,53,.08) 22%, rgba(0,22,52,.22) 56%, rgba(0,18,46,.92) 100%);
+}
+.testimonial-portrait:hover .testimonial-photo { transform: scale(1.025); }
+.testimonial-portrait .testimonial-word,
+.testimonial-portrait .testimonial-ribbon,
+.testimonial-portrait .testimonial-identity { z-index: 2; }
+.testimonial-portrait .testimonial-word {
+  top: 15%;
+  color: rgba(255,255,255,.08);
+  -webkit-text-stroke-color: rgba(255,255,255,.44);
+  text-shadow: 0 4px 28px rgba(0,16,42,.3);
+}
+
+/* Family pictograms: stronger contrast, weight and recognisable silhouettes. */
+.family-pictogram {
+  width: 88px;
+  height: 88px;
+  color: #fff;
+  background: linear-gradient(145deg, #0062a0, #003568);
+  border: 1px solid rgba(255,255,255,.5);
+  box-shadow: 0 15px 36px rgba(0,52,104,.24), inset 0 1px 0 rgba(255,255,255,.25);
+}
+.family-card--wedding .family-pictogram {
+  background: linear-gradient(145deg, #8aa47f, #526f50);
+}
+.family-pictogram svg {
+  width: 50px;
+  height: 50px;
+  stroke-width: 2.35;
+}
+.family-progress { background: rgba(0,49,94,.1); }
+.family-metric { color: #687783; }
+
+/* Family comparison sections: two deliberately background-free icon options. */
+.family-section--variation {
+  border-top: 1px solid rgba(0,55,105,.08);
+}
+.family-section--icon-solid {
+  background: linear-gradient(180deg, #f7faf5 0%, #eef4ea 100%);
+}
+.family-section--icon-linear {
+  background: linear-gradient(180deg, #f8fbff 0%, #edf4fa 100%);
+}
+.family-section--variation .family-pictogram {
+  width: 108px;
+  height: 88px;
+  margin-bottom: 14px;
+  border: 0;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none;
+}
+.family-section--variation .family-card--birth .family-pictogram { color: #004f8c; }
+.family-section--variation .family-card--wedding .family-pictogram { color: #66855d; }
+.family-section--variation .family-pictogram svg {
+  width: 72px;
+  height: 72px;
+}
+.family-section--icon-solid .family-pictogram svg {
+  fill: currentColor;
+  stroke: none;
+  filter: drop-shadow(0 8px 11px rgba(0,52,104,.13));
+}
+.family-section--icon-solid .family-card--wedding .family-pictogram svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.family-section--icon-linear .family-pictogram {
+  width: 118px;
+}
+.family-section--icon-linear .family-pictogram svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 4.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 7px 10px rgba(0,52,104,.12));
+}
+.family-section--variation .family-card:hover .family-pictogram svg {
+  transform: translateY(-3px) scale(1.035);
+}
+.family-section--variation .family-pictogram svg {
+  transition: transform .5s var(--ease-lux);
+}
+
+@media (max-width: 1100px) {
+  .feature-grid--seminars { grid-template-columns: 1fr; }
+  .feature-visual--trio { width: 100%; max-width: 850px; margin: 0 auto 30px; }
+  .double-grid--three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .double-grid--three .double-card:last-child { grid-column: 1 / -1; width: min(100%, 720px); justify-self: center; }
+}
+
+@media (max-width: 720px) {
+  .feature-visual--trio {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(260px, 70vw) repeat(2, minmax(190px, 54vw));
+    gap: 12px;
+    min-height: 0;
+    margin-bottom: 54px;
+  }
+  .feature-visual--trio .seminar-photo--hero { grid-row: auto; border-radius: 20px 20px 54px 20px; }
+  .feature-visual--trio .seminar-photo--capital,
+  .feature-visual--trio .seminar-photo--communication { border-radius: 15px; }
+  .feature-visual--trio .feature-visual-badge { left: 12px; bottom: 0; transform: translateY(calc(100% + 12px)); }
+  .tour-gallery { grid-template-columns: 1fr; gap: 14px; }
+  .tour-photo--main { width: 100%; aspect-ratio: 4 / 5; }
+  .tour-photo--action { width: 100%; aspect-ratio: 3 / 2; }
+  .double-grid--three { grid-template-columns: 1fr; }
+  .double-grid--three .double-card:last-child { grid-column: auto; width: 100%; }
+  .double-grid--three .double-visual { aspect-ratio: 4 / 3; }
+  .testimonial-portrait--integrite .testimonial-photo { object-position: center 20%; }
+  .testimonial-portrait--travail .testimonial-photo { object-position: center 24%; }
+  .family-pictogram { width: 82px; height: 82px; }
+  .family-pictogram svg { width: 46px; height: 46px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seminar-photo img, .tour-photo img, .testimonial-photo { transition: none !important; }
+}
