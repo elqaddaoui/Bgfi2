@@ -2344,12 +2344,21 @@ section[id] { scroll-margin-top: 96px; }
     linear-gradient(180deg, #f7fafc 0%, #edf3f6 100%);
   background-size: 48px 100%, auto;
 }
-.tour-variation--cover {
+#story-tour-variation-3.tour-variation--cover {
   color: #fff;
   background:
     radial-gradient(circle at 12% 88%, rgba(140,177,124,.24), transparent 30%),
-    linear-gradient(135deg, #001b43 0%, #003c72 66%, #0b6283 100%);
+    linear-gradient(135deg, #001b43 0%, #003c72 66%, #0b6283 100%) !important;
 }
+#story-tour-variation-3 .story-title,
+#story-tour-variation-3 .mag-lead,
+#story-tour-variation-3 .tour-cover-copy > p {
+  color: #fff !important;
+}
+#story-tour-variation-3 .mag-lead,
+#story-tour-variation-3 .tour-cover-copy > p { color: rgba(247,250,246,.84) !important; }
+#story-tour-variation-3 .story-month,
+#story-tour-variation-3 .story-rubric { color: #d6e5b4 !important; }
 .tour-variant-photo {
   position: relative;
   min-width: 0;
