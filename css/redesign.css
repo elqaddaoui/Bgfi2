@@ -2329,6 +2329,180 @@ section[id] { scroll-margin-top: 96px; }
 }
 .tour-gallery > .mag-frame-corner { z-index: 3; }
 
+/* BGFI Tour comparison layouts — every image owns its own unobstructed frame. */
+.tour-variation {
+  border-top: 1px solid rgba(0,57,104,.09);
+}
+.tour-variation--panorama {
+  background:
+    radial-gradient(circle at 88% 10%, rgba(139,172,125,.12), transparent 28%),
+    linear-gradient(180deg, #fbfcf8 0%, #f2f6ef 100%);
+}
+.tour-variation--dossier {
+  background:
+    linear-gradient(90deg, rgba(0,67,119,.035) 1px, transparent 1px),
+    linear-gradient(180deg, #f7fafc 0%, #edf3f6 100%);
+  background-size: 48px 100%, auto;
+}
+.tour-variation--cover {
+  color: #fff;
+  background:
+    radial-gradient(circle at 12% 88%, rgba(140,177,124,.24), transparent 30%),
+    linear-gradient(135deg, #001b43 0%, #003c72 66%, #0b6283 100%);
+}
+.tour-variant-photo {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 28px 76px rgba(0,31,77,.2);
+}
+.tour-variant-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s var(--ease-lux);
+}
+.tour-variant-photo:hover img { transform: scale(1.025); }
+.tour-variant-photo--poster img {
+  object-fit: contain;
+  object-position: center;
+  background: #fff;
+}
+.tour-variant-photo--wide img,
+.tour-variant-photo--action img { object-fit: cover; }
+.tour-variant-photo figcaption {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  z-index: 2;
+  padding: 10px 13px;
+  color: #fff;
+  background: rgba(0,31,77,.82);
+  backdrop-filter: blur(11px);
+  border: 1px solid rgba(255,255,255,.14);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.tour-variation-head {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(420px, 1.15fr);
+  column-gap: clamp(44px, 7vw, 110px);
+  align-items: end;
+  margin-bottom: 44px;
+}
+.tour-variation-head .mag-meta { grid-column: 1 / -1; }
+.tour-variation-head .story-title { margin: 0; }
+.tour-variation-head .mag-lead { margin: 0; }
+.tour-panorama-media {
+  display: grid;
+  grid-template-columns: minmax(260px, .72fr) minmax(0, 1.48fr);
+  gap: 22px;
+  align-items: stretch;
+}
+.tour-panorama-media .tour-variant-photo--poster { aspect-ratio: 3 / 4; }
+.tour-panorama-media .tour-variant-photo--wide { min-height: 560px; }
+.tour-panorama-foot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(430px, .9fr);
+  gap: 50px;
+  align-items: center;
+  margin-top: 34px;
+}
+.tour-panorama-foot > p,
+.tour-dossier-copy > p,
+.tour-cover-copy > p {
+  font-family: var(--font-editorial);
+  font-size: 17px;
+  line-height: 1.72;
+  color: var(--ink-soft);
+}
+.tour-panorama-foot .tour-stats { margin: 0; }
+.tour-dossier-grid {
+  display: grid;
+  grid-template-columns: minmax(240px, .78fr) minmax(320px, 1fr) minmax(300px, 1.06fr);
+  gap: clamp(28px, 4vw, 58px);
+  align-items: center;
+}
+.tour-dossier-grid .tour-variant-photo--poster { aspect-ratio: 3 / 4; }
+.tour-dossier-grid .tour-variant-photo--action { aspect-ratio: 4 / 5; }
+.tour-dossier-copy { padding: 18px 0; }
+.tour-dossier-number {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0,65,116,.18);
+}
+.tour-dossier-number b {
+  font-family: var(--font-display);
+  font-size: clamp(3.8rem, 6vw, 6rem);
+  line-height: .8;
+  color: #78986e;
+}
+.tour-dossier-number span {
+  color: var(--bgfi-blue-deep);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .15em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.tour-cover-grid {
+  display: grid;
+  grid-template-columns: minmax(330px, .78fr) minmax(0, 1.22fr);
+  gap: clamp(48px, 7vw, 100px);
+  align-items: center;
+}
+.tour-cover-copy { padding: 34px 0; }
+.tour-cover-copy .story-title,
+.tour-cover-copy .mag-lead,
+.tour-cover-copy > p { color: #fff; }
+.tour-cover-copy .mag-lead,
+.tour-cover-copy > p { color: rgba(247,250,246,.82); }
+.tour-cover-index {
+  display: inline-block;
+  margin-bottom: 26px;
+  color: #d6e5b4;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+}
+.tour-cover-gallery {
+  display: grid;
+  grid-template-columns: minmax(220px, .78fr) minmax(0, 1.22fr);
+  gap: 18px;
+  align-items: end;
+}
+.tour-cover-gallery .tour-variant-photo--poster { aspect-ratio: 3 / 4; }
+.tour-cover-gallery .tour-variant-photo--action { aspect-ratio: 4 / 3; }
+.tour-cover-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 32px;
+}
+.tour-cover-facts span {
+  padding: 10px 13px;
+  border: 1px solid rgba(214,229,180,.24);
+  color: rgba(255,255,255,.78);
+  background: rgba(255,255,255,.045);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+.tour-cover-facts b { color: #d6e5b4; font-family: var(--font-display); font-size: 1.15rem; }
+
+/* Decorative words are intentionally removed from both testimonial portraits. */
+.testimonial-word { display: none !important; }
+
 /* Three matching editorial cards. */
 .double-grid--three {
   grid-template-columns: repeat(3, minmax(0, 1fr));
